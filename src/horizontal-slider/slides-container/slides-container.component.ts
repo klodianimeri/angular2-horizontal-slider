@@ -28,10 +28,6 @@ export class SlidesContainerComponent implements AfterContentInit {
   constructor(private _renderer: Renderer, public _element: ElementRef) { }
 
   ngAfterContentInit() {
-    // this._renderer.listen(this._element.nativeElement, "transitionend", () => {
-    //   this.CheckEdges();
-    // });
-
   }
 
   SetVisibleSlides(visibleSlides: number) {
