@@ -1,1 +1,1 @@
-exports.HorizontalSliderModule = require('./lib/horizontal-slider.module').HorizontalSliderModule;
+export { HorizontalSliderModule } from "./lib/horizontal-slider.module";
