@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app';
 import { HomeComponent } from './pages/home/home.component';
 
-import { HorizontalSliderModule } from "./../../../../components";
+import { HorizontalSliderModule } from "angular2-horizontal-slider";
 
 @NgModule({
   imports: [
