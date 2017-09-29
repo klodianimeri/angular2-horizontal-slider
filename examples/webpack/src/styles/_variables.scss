@@ -1,0 +1,61 @@
+// Colors
+//
+// Grayscale and brand colors for use across Bootstrap.
+$brand-black: black !default;
+$brand-white: white !default;
+$brand-menu-font: 'Passion One',
+cursive;
+;
+$brand-hedline-font: 'Passion One',
+cursive;
+;
+$brand-normal-font: 'Open Sans',
+sans-serif;
+$gray-dark: #373a3c !default;
+$gray: #55595c !default;
+$gray-light: #818a91 !default;
+$gray-lighter: #eceeef !default;
+$gray-lightest: #f7f7f9 !default;
+$brand-primary: #3366FF !default;
+$brand-success: #58aa3d !default;
+$brand-info: #5bc0de !default;
+$brand-warning: #e3a703 !default;
+$brand-danger: #db251c !default;
+$brand-inverse: $gray-dark !default;
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+$grid-breakpoints: ( xs: 0, sm: 544px, md: 768px, lg: 992px, xl: 1200px) !default;
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+$container-max-widths: ( sm: 576px, md: 720px, lg: 940px, xl: 1140px) !default;
+// Body
+//
+// Settings for the `<body>` element.
+$body-bg: #fff !default;
+$body-color: $gray-dark !default;
+// Links
+//
+// Style anchor elements.
+$link-color: $brand-primary !default;
+$link-decoration: none !default;
+$link-hover-color: darken($link-color, 15%) !default;
+$link-hover-decoration: underline !default;
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+$font-family-sans-serif: 'Montserrat',
+sans-serif !default;
+$font-family-serif: Georgia,
+"Times New Roman",
+Times,
+serif !default;
+$font-family-monospace: Menlo,
+Monaco,
+Consolas,
+"Liberation Mono",
+"Courier New",
+monospace !default;
+$font-family-base: $font-family-sans-serif !default;
