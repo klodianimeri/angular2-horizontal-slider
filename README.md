@@ -26,7 +26,7 @@ export class AppModule { }
 
 ## Angular 2 Horizontal Slider
 
-You can configure your slider to show different nummber of slides in different screen sizes. There are supported 4 screesizes xs, sm, md, lg. The default number of slides for these screensizes is:
+You can configure your slider to show different nummber of slides in different screen sizes. There are supported 4 screesizes xs, sm, md, lg. The default number of slides for these screensizes are:
 
 ```js
 this.XsVisibleSlides = 1;
