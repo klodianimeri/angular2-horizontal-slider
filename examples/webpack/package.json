@@ -1,6 +1,5 @@
 {
   "name": "ng-generic",
-  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

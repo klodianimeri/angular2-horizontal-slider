@@ -5,9 +5,9 @@ import {
     HorizontalSliderComponent,
     HsNavLeftComponent,
     HsNavRightComponent
-} from "./horizontal-slider.component";
-import { HsSlideComponent } from "./hs-slide/hs-slide.component";
-import { SlidesContainerComponent } from "./slides-container/slides-container.component";
+} from "./src/horizontal-slider/horizontal-slider.component";
+import { HsSlideComponent } from "./src/horizontal-slider/hs-slide/hs-slide.component";
+import { SlidesContainerComponent } from "./src/horizontal-slider/slides-container/slides-container.component";
 
 @NgModule({
     declarations: [

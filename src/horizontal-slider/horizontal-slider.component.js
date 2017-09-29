@@ -5,68 +5,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = require('@angular/core');
-var common_1 = require("@angular/common");
-var hs_slide_component_1 = require('./hs-slide/hs-slide.component');
-var SlidesContainerComponent = (function () {
-    function SlidesContainerComponent(_renderer, _element) {
-        this._renderer = _renderer;
-        this._element = _element;
-    }
-    SlidesContainerComponent.prototype.SetWidth = function (width) {
-        this._renderer.setElementStyle(this._element.nativeElement, "width", width.toString() + "px");
-    };
-    SlidesContainerComponent.prototype.SetLeft = function (left) {
-        this._renderer.setElementStyle(this._element.nativeElement, "left", left.toString() + "px");
-    };
-    SlidesContainerComponent.prototype.OnTransitionEndCallback = function (callback) {
-        this._renderer.listen(this._element.nativeElement, "transitionend", callback);
-    };
-    SlidesContainerComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'slides-container',
-            template: "<ng-content></ng-content>",
-        }), 
-        __metadata('design:paramtypes', [core_1.Renderer, core_1.ElementRef])
-    ], SlidesContainerComponent);
-    return SlidesContainerComponent;
-}());
-;
+exports.__esModule = true;
+var core_1 = require("@angular/core");
+var hs_slide_component_1 = require("./hs-slide/hs-slide.component");
+var slides_container_component_1 = require("./slides-container/slides-container.component");
 var HsNavLeftComponent = (function () {
     function HsNavLeftComponent(_renderer, _element) {
         this._renderer = _renderer;
         this._element = _element;
     }
-    HsNavLeftComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'nav-left-icon',
-            template: "<ng-content></ng-content>",
-        }), 
-        __metadata('design:paramtypes', [core_1.Renderer, core_1.ElementRef])
-    ], HsNavLeftComponent);
     return HsNavLeftComponent;
 }());
+HsNavLeftComponent = __decorate([
+    core_1.Component({
+        selector: 'hs-nav-left',
+        template: "<ng-content></ng-content>"
+    })
+], HsNavLeftComponent);
+exports.HsNavLeftComponent = HsNavLeftComponent;
 ;
 var HsNavRightComponent = (function () {
     function HsNavRightComponent(_renderer, _element) {
         this._renderer = _renderer;
         this._element = _element;
     }
-    HsNavRightComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'nav-right-icon',
-            template: "<ng-content></ng-content>",
-        }), 
-        __metadata('design:paramtypes', [core_1.Renderer, core_1.ElementRef])
-    ], HsNavRightComponent);
     return HsNavRightComponent;
 }());
+HsNavRightComponent = __decorate([
+    core_1.Component({
+        selector: 'hs-nav-right',
+        template: "<ng-content></ng-content>"
+    })
+], HsNavRightComponent);
+exports.HsNavRightComponent = HsNavRightComponent;
 ;
 var HorizontalSliderComponent = (function () {
     function HorizontalSliderComponent(_renderer, _element) {
@@ -77,7 +48,6 @@ var HorizontalSliderComponent = (function () {
         this.SmVisibleSlides = 2;
         this.MdVisibleSlides = 3;
         this.LgVisibleSlides = 4;
-        this._containerOffsetLeft = 0;
     }
     HorizontalSliderComponent.prototype.ngAfterViewInit = function () {
         if (!this.HideNav) {
@@ -86,57 +56,12 @@ var HorizontalSliderComponent = (function () {
         this.CalulateEngine();
     };
     HorizontalSliderComponent.prototype.ngAfterContentInit = function () {
-        var _this = this;
-        this.SlidesContainer.OnTransitionEndCallback(function () {
-            _this.CheckEdges();
-        });
     };
     HorizontalSliderComponent.prototype.onNavigateLeft = function () {
-        var SlideContainerLeft = this.SlidesContainer._element.nativeElement.offsetLeft;
-        if (SlideContainerLeft >= 0) {
-            this.NavigateLeft(0);
-        }
-        else if (SlideContainerLeft <= -(this._slideWidth * this.VisibleSlides)) {
-            this.NavigateLeft(SlideContainerLeft + (this._slideWidth * this.VisibleSlides));
-        }
-        else if (SlideContainerLeft > -(this._slideWidth * this.VisibleSlides) && SlideContainerLeft < 0) {
-            this.NavigateLeft(0);
-        }
+        this.SlidesContainer.onNavigateLeft();
     };
     HorizontalSliderComponent.prototype.onNavigateRight = function () {
-        var SlideContainerLeft = this.SlidesContainer._element.nativeElement.offsetLeft;
-        if (SlideContainerLeft !== 0 && SlideContainerLeft <= -(this._containerWidth - (this._slideWidth * this.VisibleSlides))) {
-            this.NavigateLeft(-(this._containerWidth - (this._slideWidth * this.VisibleSlides)));
-        }
-        else if (this._containerWidth + SlideContainerLeft >= 2 * (this._slideWidth * this.VisibleSlides)) {
-            this.NavigateLeft(SlideContainerLeft + (-this._slideWidth * this.VisibleSlides));
-        }
-        else if (this._containerWidth + SlideContainerLeft >= (this._slideWidth * this.VisibleSlides)
-            && this._containerWidth + SlideContainerLeft < 2 * (this._slideWidth * this.VisibleSlides)) {
-            var toleft = ((this._containerWidth - this._slideWidth * this.VisibleSlides) + SlideContainerLeft);
-            this.NavigateLeft(SlideContainerLeft + (-toleft));
-        }
-    };
-    HorizontalSliderComponent.prototype.CheckEdges = function () {
-        var SlideContainerLeft = this.SlidesContainer._element.nativeElement.offsetLeft;
-        if (SlideContainerLeft >= 0) {
-            this.NavigateLeft(0);
-            return;
-        }
-        if (SlideContainerLeft < -(this._containerWidth - (this._slideWidth * this.VisibleSlides))) {
-            this.NavigateLeft(-(this._containerWidth - (this._slideWidth * this.VisibleSlides)));
-            return;
-        }
-        //Prevent half sides of other slides from showing when window is resized
-        if (SlideContainerLeft % (this._slideWidth * this.VisibleSlides) != 0) {
-            var remainder = SlideContainerLeft % this._slideWidth;
-            if (Math.abs(remainder) >= (this._slideWidth / 2)) {
-                this.NavigateLeft(SlideContainerLeft + -(this._slideWidth + remainder));
-            }
-            else {
-                this.NavigateLeft(SlideContainerLeft + (-remainder));
-            }
-        }
+        this.SlidesContainer.onNavigateRight();
     };
     HorizontalSliderComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -149,16 +74,14 @@ var HorizontalSliderComponent = (function () {
     };
     Object.defineProperty(HorizontalSliderComponent.prototype, "IsAtStart", {
         get: function () {
-            return Math.abs(this._containerOffsetLeft) == 0;
+            return this.SlidesContainer.IsAtStart;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(HorizontalSliderComponent.prototype, "IsAtEnd", {
         get: function () {
-            var isLastSlide = Math.abs(Math.trunc(this._containerOffsetLeft)) == Math.trunc((this._containerWidth - (this._slideWidth * this.VisibleSlides)));
-            var smallContainer = this._containerWidth < this._element.nativeElement.clientWidth;
-            return isLastSlide || smallContainer;
+            return this.SlidesContainer.IsAtEnd;
         },
         enumerable: true,
         configurable: true
@@ -181,59 +104,43 @@ var HorizontalSliderComponent = (function () {
     HorizontalSliderComponent.prototype.SetSizes = function (visibleSlides) {
         var _this = this;
         this._slideWidth = this._element.nativeElement.clientWidth / visibleSlides;
-        this._containerWidth = this._slideWidth * this.HsSlideComponents.length;
-        this.SlidesContainer.SetWidth(this._containerWidth);
+        this.SlidesContainer.SetSlideWidth(this._slideWidth);
+        this.SlidesContainer.SetWidth(this._slideWidth * this.HsSlideComponents.length);
         this.HsSlideComponents.toArray().forEach(function (element) {
             element.SetWidth(_this._slideWidth);
         });
-        this.VisibleSlides = visibleSlides;
-        this.CheckEdges();
+        this.SlidesContainer.SetVisibleSlides(visibleSlides);
     };
-    HorizontalSliderComponent.prototype.NavigateLeft = function (left) {
-        this.SlidesContainer.SetLeft(left);
-        this._containerOffsetLeft = left;
-    };
-    __decorate([
-        core_1.Input("hide-nav"), 
-        __metadata('design:type', Boolean)
-    ], HorizontalSliderComponent.prototype, "HideNav", void 0);
-    __decorate([
-        core_1.ContentChildren(hs_slide_component_1.HsSlideComponent), 
-        __metadata('design:type', core_1.QueryList)
-    ], HorizontalSliderComponent.prototype, "HsSlideComponents", void 0);
-    __decorate([
-        core_1.ViewChild(SlidesContainerComponent), 
-        __metadata('design:type', SlidesContainerComponent)
-    ], HorizontalSliderComponent.prototype, "SlidesContainer", void 0);
-    __decorate([
-        core_1.Input("xs-visible-slides"), 
-        __metadata('design:type', Number)
-    ], HorizontalSliderComponent.prototype, "XsVisibleSlides", void 0);
-    __decorate([
-        core_1.Input("sm-visible-slides"), 
-        __metadata('design:type', Number)
-    ], HorizontalSliderComponent.prototype, "SmVisibleSlides", void 0);
-    __decorate([
-        core_1.Input("md-visible-slides"), 
-        __metadata('design:type', Number)
-    ], HorizontalSliderComponent.prototype, "MdVisibleSlides", void 0);
-    __decorate([
-        core_1.Input("lg-visible-slides"), 
-        __metadata('design:type', Number)
-    ], HorizontalSliderComponent.prototype, "LgVisibleSlides", void 0);
-    HorizontalSliderComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: "horizontal-slider, [horizontal-slider]",
-            templateUrl: "./horizontal-slider.component.html",
-            styleUrls: ["./horizontal-slider.component.css"],
-            encapsulation: core_1.ViewEncapsulation.None,
-            directives: [SlidesContainerComponent, common_1.NgIf, common_1.NgClass]
-        }), 
-        __metadata('design:paramtypes', [core_1.Renderer, core_1.ElementRef])
-    ], HorizontalSliderComponent);
     return HorizontalSliderComponent;
 }());
+__decorate([
+    core_1.Input("hide-nav")
+], HorizontalSliderComponent.prototype, "HideNav");
+__decorate([
+    core_1.ContentChildren(hs_slide_component_1.HsSlideComponent)
+], HorizontalSliderComponent.prototype, "HsSlideComponents");
+__decorate([
+    core_1.ViewChild(slides_container_component_1.SlidesContainerComponent)
+], HorizontalSliderComponent.prototype, "SlidesContainer");
+__decorate([
+    core_1.Input("xs-visible-slides")
+], HorizontalSliderComponent.prototype, "XsVisibleSlides");
+__decorate([
+    core_1.Input("sm-visible-slides")
+], HorizontalSliderComponent.prototype, "SmVisibleSlides");
+__decorate([
+    core_1.Input("md-visible-slides")
+], HorizontalSliderComponent.prototype, "MdVisibleSlides");
+__decorate([
+    core_1.Input("lg-visible-slides")
+], HorizontalSliderComponent.prototype, "LgVisibleSlides");
+HorizontalSliderComponent = __decorate([
+    core_1.Component({
+        selector: "horizontal-slider, [horizontal-slider]",
+        template: "<div class=\"horizontal-slider\">\n    <div class=\"horizontal-slider-wrapper\">\n        <slides-container>\n            <div class=\"slides\">\n                <ng-content select=\"hs-slide\"></ng-content>\n            </div>\n        </slides-container>\n    </div>\n\n    <div class=\"nav nav-left\" (click)=\"onNavigateLeft()\" *ngIf=\"!HideNav\" [class.disabled]=\"IsAtStart\">\n        <ng-content select=\"hs-nav-left\"></ng-content>\n    </div>\n    <div class=\"nav nav-right\" (click)=\"onNavigateRight()\" *ngIf=\"!HideNav\" [class.disabled]=\"IsAtEnd\">\n        <ng-content select=\"hs-nav-right\"></ng-content>\n    </div>\n</div>",
+        styles: ["[horizontal-slider],horizontal-slider{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;height:100%}[horizontal-slider].hs-navigation,horizontal-slider.hs-navigation{margin-left:34px;margin-right:34px}[horizontal-slider] .horizontal-slider,horizontal-slider .horizontal-slider{position:relative;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex:1;flex:1}[horizontal-slider] .horizontal-slider .horizontal-slider-wrapper,horizontal-slider .horizontal-slider .horizontal-slider-wrapper{position:relative;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex:1;flex:1;overflow:hidden}[horizontal-slider] .horizontal-slider .nav,horizontal-slider .horizontal-slider .nav{position:absolute;top:50%;transform:translateY(-50%);font-size:2.3rem;padding:7px;cursor:pointer;transition:left .31s ease,right .31s ease}[horizontal-slider] .horizontal-slider .nav:active,horizontal-slider .horizontal-slider .nav:active{color:rgba(0,0,0,.57)}[horizontal-slider] .horizontal-slider .nav.disabled,horizontal-slider .horizontal-slider .nav.disabled{color:rgba(0,0,0,.17)}[horizontal-slider] .horizontal-slider .nav.disabled.nav-left:hover,horizontal-slider .horizontal-slider .nav.disabled.nav-left:hover{left:-30px}[horizontal-slider] .horizontal-slider .nav.disabled.nav-right:hover,horizontal-slider .horizontal-slider .nav.disabled.nav-right:hover{right:-30px}[horizontal-slider] .horizontal-slider .nav.nav-left,horizontal-slider .horizontal-slider .nav.nav-left{left:-30px}[horizontal-slider] .horizontal-slider .nav.nav-left:hover,horizontal-slider .horizontal-slider .nav.nav-left:hover{left:-34px}[horizontal-slider] .horizontal-slider .nav.nav-right,horizontal-slider .horizontal-slider .nav.nav-right{right:-30px}[horizontal-slider] .horizontal-slider .nav.nav-right:hover,horizontal-slider .horizontal-slider .nav.nav-right:hover{right:-34px}"],
+        encapsulation: core_1.ViewEncapsulation.None
+    })
+], HorizontalSliderComponent);
 exports.HorizontalSliderComponent = HorizontalSliderComponent;
 exports.HORIZONTAL_SLIDER_DIRECTIVES = [HorizontalSliderComponent, hs_slide_component_1.HsSlideComponent, HsNavLeftComponent, HsNavRightComponent];
-//# sourceMappingURL=horizontal-slider.component.js.map
