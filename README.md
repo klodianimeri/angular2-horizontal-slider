@@ -3,7 +3,7 @@
 
 A very minimalistic fully responsive angular 2 horizontal slider.
 
-## Import this module
+## Import this module to your angular app
 
 ```js
 import { HorizontalSliderModule } from "angular2-horizontal-slider";
