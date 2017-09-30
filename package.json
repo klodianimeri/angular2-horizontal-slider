@@ -1,6 +1,6 @@
 {
   "name": "angular2-horizontal-slider",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "license": "MIT",
   "author": "klodianimeri@gmail.com",
   "repository": {
@@ -8,6 +8,12 @@
     "url": "https://github.com/klodianimeri/angular2-horizontal-slider.git"
   },
   "private": false,
+  "keywords": [
+    "Angular2",
+    "Slider",
+    "Horizontal slider",
+    "ng2"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

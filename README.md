@@ -52,6 +52,7 @@ The navigation icons or text should be wrapped up inside *hs-nav-left* and *hs-n
 </horizontal-slider>
 ```
 
+The horizontal slider should be wrapped with an element which his height is specified.
 Full example:
 
 ```html
