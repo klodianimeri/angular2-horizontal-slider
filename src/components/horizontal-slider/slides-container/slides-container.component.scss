@@ -1,0 +1,12 @@
+:host {
+    display: block;
+    height: 100%;
+    position: relative;
+    left: 0;
+    transition: left .4s ease-out;
+    /deep/.slides {
+        display: flex;
+        flex: 1;
+        height: 100%;
+    }
+}
