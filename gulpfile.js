@@ -13,7 +13,7 @@ gulp.task('sass', function () {
         'src/**/**/**/*.scss',
         'src/**/**/**/**/*.scss',
         'src/**/**/**/**/**/*.scss',])
-        .pipe(sass())
+        .pipe(sass.sync().on('error', sass.logError))
         .pipe(postcss([autoprefixer({ browsers: ['last 2 versions'] })]))
         .pipe(sourcemaps.write())
         .pipe(cleanCSS({ compatibility: 'ie8' }))

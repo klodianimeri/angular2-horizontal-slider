@@ -21,3 +21,4 @@ import { HorizontalSliderModule } from "./../components/horizontal-slider/horizo
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
