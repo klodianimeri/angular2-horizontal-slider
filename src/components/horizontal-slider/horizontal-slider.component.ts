@@ -44,6 +44,7 @@ export class HsNavRightComponent {
 export class HorizontalSliderComponent implements OnInit, OnDestroy, AfterContentInit {
     private _onResizeListenerHandler: any;
     private _slideWidth: number;
+    public _isContentInit: boolean = false;
 
     @Input("hide-nav") HideNav: boolean;
     @ContentChildren(HsSlideComponent) HsSlideComponents: QueryList<HsSlideComponent>;
@@ -76,6 +77,11 @@ export class HorizontalSliderComponent implements OnInit, OnDestroy, AfterConten
     }
 
     ngAfterContentInit() {
+        this.HsSlideComponents.notifyOnChanges();
+        this.HsSlideComponents.changes.subscribe((e) => {
+            this._isContentInit = true;
+            this.CalulateEngine();
+        });
     }
 
     onNavigateLeft() {

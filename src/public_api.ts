@@ -1,0 +1,1 @@
+export * from './components/horizontal-slider/horizontal-slider.module';

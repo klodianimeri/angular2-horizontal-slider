@@ -7,10 +7,12 @@
         </slides-container>
     </div>
 
-    <div class="nav nav-left" (click)="onNavigateLeft()" *ngIf="!HideNav" [class.disabled]="IsAtStart">
+    <div class="nav nav-left" (click)="onNavigateLeft()" *ngIf="!HideNav && _isContentInit"
+        [class.disabled]="IsAtStart">
         <ng-content select="hs-nav-left"></ng-content>
     </div>
-    <div class="nav nav-right" (click)="onNavigateRight()" *ngIf="!HideNav" [class.disabled]="IsAtEnd">
+    <div class="nav nav-right" (click)="onNavigateRight()" *ngIf="!HideNav && _isContentInit"
+        [class.disabled]="IsAtEnd">
         <ng-content select="hs-nav-right"></ng-content>
     </div>
 </div>
