@@ -1,6 +1,6 @@
 {
   "name": "angular2-horizontal-slider",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "license": "MIT",
   "author": "klodianimeri@gmail.com",
   "repository": {
@@ -17,7 +17,7 @@
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/package.schema.json",
     "name": "angular2-horizontal-slider",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "ngPackage": {
       "lib": {
         "entryFile": "public_api.ts"
@@ -47,7 +47,9 @@
     "core-js": "^2.4.1",
     "rxjs": "^6.4.0",
     "tslib": "^1.9.0",
-    "zone.js": "^0.8.29"
+    "zone.js": "^0.8.29",
+    "hammer-timejs": "^1.1.0",
+    "hammerjs": "^2.0.8"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
@@ -65,8 +67,8 @@
     "gulp-minify": "^1.0.0",
     "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "3.1.0",
-    "gulp-sourcemaps": "2.6.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",
@@ -76,6 +78,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "ng-packagr": "^4.7.1",
+    "node-sass": "^4.11.0",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tsickle": "^0.34.3",

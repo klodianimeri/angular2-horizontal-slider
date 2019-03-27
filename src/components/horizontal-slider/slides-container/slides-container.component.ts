@@ -1,22 +1,18 @@
 import {
   Component,
-  ViewEncapsulation,
-  Input,
   Renderer,
   ElementRef,
-  AfterViewInit,
   AfterContentInit,
-  ViewChild,
-  ContentChildren,
-  QueryList,
-  OnDestroy,
-  OnInit
 } from '@angular/core';
 
 @Component({
   selector: 'slides-container',
   templateUrl: './slides-container.component.html',
-  styleUrls: ['./slides-container.component.css']
+  styleUrls: ['./slides-container.component.css'],
+  host: {
+    '(swiperight)': "onNavigateLeft()",
+    '(swipeleft)': "onNavigateRight()"
+  }
 })
 export class SlidesContainerComponent implements AfterContentInit {
   private _slideWidth: number;
